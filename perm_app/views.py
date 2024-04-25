@@ -17,6 +17,10 @@ def findPermutation(request):
             perm=Permutation()
             list1=[]
             data = form.cleaned_data.get('input')
+            if len(data)==1:
+                list1=[data]
+            elif len(data)==2:
+                list1=[data,data[::-1]]
             if len(data)==3:
                 list1 =perm.perm3(data)
             elif len(data)==4:
@@ -32,7 +36,7 @@ def findPermutation(request):
             elif len(data)==9:
                 list1 =perm.perm9(data)
             else:
-                list1=[""]
+                list1=[data]
             return JsonResponse({'param1': list1})
         else:
             return JsonResponse({'error': 'Form data is invalid'}, status=400)

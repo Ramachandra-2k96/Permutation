@@ -17,7 +17,6 @@ def findPermutation(request):
             perm=Permutation()
             list1=[]
             data = form.cleaned_data.get('input')
-            print(data)
             if len(data)==3:
                 list1 =perm.perm3(data)
             elif len(data)==4:

@@ -21,7 +21,7 @@ def findPermutation(request):
                 list1=[data]
             elif len(data)==2:
                 list1=[data,data[::-1]]
-            if len(data)==3:
+            elif len(data)==3:
                 list1 =perm.perm3(data)
             elif len(data)==4:
                list1 = perm.perm4(data)

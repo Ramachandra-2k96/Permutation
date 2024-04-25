@@ -95,13 +95,17 @@
                     if (response.param1) {
                         var tableHtml = '<h1>Total words generated :'+response.param1.length+'</h1><table border="1" cellspacing="0" width="100%" cellpadding="10">' +
                                         '<thead><tr><th colspan="4" align="center">Permutations</th></tr></thead>';
-                        for (var i = 0; i < response.param1.length; i += 4) {
+                        for (var i = 0; i < response.param1.length; i++) {
+                        if (i % 4 === 0) {
+                            // Start a new row
                             tableHtml += '<tr>';
-                            for (var j = 0; j < 4 && i + j < response.param1.length; j++) {
-                                tableHtml += '<td>' + response.param1[i + j] + '</td>';
-                            }
+                        }
+                        tableHtml += '<td>' + response.param1[i] + '</td>';
+                        if (i % 4 === 3 || i === response.param1.length - 1) {
+                            // End the current row if it's the fourth column or it's the last item
                             tableHtml += '</tr>';
                         }
+                    }
                         tableHtml += '</table>';
                         $("#table-container").html(tableHtml);
                     } else {
